@@ -1,0 +1,82 @@
+1. Comparable이란 interface에 있는 method인 compareTo()는 무엇이고 왜 필요한가? 설명하라.
+
+Comparable Interface의 compareTo()란?
+
+ Interface Comparable<T> 가 구현되어 있는 객체에서 사용가능한 객체 비교 메서드(Method)입니다. Comparable 인터페이스는 객체를 정렬하는 데 사용되는 메소드인 compareTo() 메소드를 정의하고 있습니다.Boolean을 제외한 래퍼 클래스나 String, Time, Date와 같은 클래스의 인스턴스는 모두 정렬 가능합니다. 자바에서 같은 타입의 인스턴스를 서로 비교해야만 하는 클래스들은 모두 Comparable 인터페이스를 구현할 수 있습니다. 객체 간의 일반적인 정렬이 필요할 때, Comparable 인터페이스를 확장해서 정렬의 기준을 정의하는 compareTo() 메서드를 구현합니다.
+
+
+
+
+
+이때 기본 정렬 순서는 작은 값에서 큰 값으로 정렬되는 오름차순이 됩니다. Java에서 제공되는 정렬이 가능한 클래스들은 모두 Comparable 인터페이스를 구현하고 있으며, 정렬 시에 이에 맞게 정렬이 수행됩니다.
+
+s1.compareTo (s2) returns 
+
+  - negative integer if s1 < s2
+
+  - positive integer if s1 > s2
+
+  - zero if s1 = s2
+
+
+
+// Integer class
+
+public final class Integer extends Number implements Comparable<Integer> { ... }
+
+// String class
+
+public final class String implements java.io.Serializable, Comparable<String>, CharSequence { ... }
+
+
+
+- 기본 유형(Primitive Types)에 대해서는 적용할 수 없습니다.
+
+- 사용자가 정의한 정렬 기준에 맞춰 정렬하기 위한 용도 로 compareTo() 메서드를 오버라이드하여 구현합니다.
+
+- 정렬할 객체에 Comparable interface를 implements 후, compareTo() 메서드를 오버라이드하여 구현합니다.
+
+- 반환 형태: integer type
+
+  - 현재 객체 < 인자로 넘어온 객체: return 음수
+
+  - 현재 객체 == 인자로 넘어온 객체: return 0
+
+  - 현재 객체 > 인자로 넘어온 객체: return 양수
+
+
+
+
+
+2. sorting 이란 무엇이고 왜 필요한가? 왜 그렇게 많은 종류가 있는가? 설명하라.
+
+ sorting(정렬)이란 사용자가 지정한 기준에 맞게 정렬하여 출력하는 알고리즘입니다. 이것이 필요한 이유는 무분별한 데이터를 특정 기준에 맞춰 알아보기 쉽게 가시화를 해야하거나, 원하는 값을 찾기 위해서 필요합니다. 정렬없는 데이터를 보았을 때 데이터셋의 특징을 찾기 힘드며, 다시 말해 데이터 활용을 못하는 상황에 이를 수 있습니다.
+
+ 데이터를 정렬할 때, 주어진 데이터의 크기와 정렬된 정도(분산 정도), 기준값(pivot) 등등을 기준으로 최선과 최악의 경우를 구분합니다. 최선과 최악의 경우에 따라 처리되는 시간(Complexity)이 상이하기 합니다. 최선의 경우에 삽입정렬(Insertion Sort)을 사용하면 O(N)이라는 엄청나게 빠른 효율성을 나타냅니다. 하지만 최악의 경우에 삽입정렬을 사용하면  O(n2)이라는 시간복잡도를 갖게됩니다. 즉, 데이터의 상태 및 데이터의 크기에 따라서 성능의 편차가 굉장히 심한 정렬법입니다. 
+
+ 위와 같은 예시를 보면, 데이터셋의 특징(크기, 정렬된 정도 등)에 따라 적용할 정렬 알고리즘이 다르기 때문에 많은 종류의 정렬 알고리즘이 있습니다. 실제 응용에서는 상황에 따라 두 가지 이상의 정렬 방법을 사용하는 경우가 많습니다. 예를 들면, 정렬 대상이 특정 크기 이하로 단편화될 때 까지는 퀵정렬을 쓸 수 있습니다. 또 다른 예로 그 특정 크기 이하가 됐을 때에는 작은 규모에서 강점을 보이는 삽입정렬을 쓸 수 있습니다.
+
+
+
+Algorithm  In-Place Stable comparison	Complexity
+
+Bubble		○	 ○	  ○		 O(n2)
+
+Selection		○	 ○	  ○		 O(n2)
+
+Insertion		○	 ○	  ○		 O(n2)
+
+Shell		○	 ○	  ○		 O(n2)
+
+Merge		×	 ○	  ○		 O(nlogn)
+
+Heap		○	 ×	  ○		 O(nlogn)
+
+Quick		○	 ×	  ○		 O(nlogn)
+
+Counting		×	 ○	  ×		 O(n+k)
+
+Radix		×	 ○	  ×		 d×O(n)
+
+Bucket		×	 ○	  -		 O(n)
+
