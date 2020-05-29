@@ -1,0 +1,31 @@
+1. 교과서 452쪽 exercise 7
+
+	private int recur_search(Node currentNode, T anEntry){
+		if(currentNode==null){
+			return;
+		}
+		else{
+			bool temp=false;
+			if(anEntry.equals(currentNode.data)){
+				temp=true;
+			}
+			if(temp){
+				return 1+recur_search(currentNode.next, anEntry);
+			}
+			else{
+				return 0+recur_search(currentNode.next, anEntry);
+			}
+		}
+	}
+
+    public int getCount(T anEntry){
+	Node currentNode=firstNode;
+	return recur_search(currentNode, anEntry);
+    }
+
+2. iterator란 무엇이고 왜 필요한가? 설명하라
+
+Java에서 제공하는 컬렉션(Collection)객체는 보관하고 있는 자료들을 순차적으로 접근하면서 처리할 때 사용하는 Iterator 형식을 제공하고 있습니다. Iterator는 반복자라고 부르며 컬렉션 종류에 관계없이 같은 방법으로 프로그래밍 할 수 있게 해줍니다. Iterator란 컬렉션 프레임워크에서 저장된 요소를 읽어오는 방법을 표준화하기 위한 역할(인터페이스)을 맡습니다.
+사용방법은 Iterator 개체는 컬렉션 개체의 iterator() 메서드를 호출하여 얻어올 수 있습니다. hasNext() 메서드로 이동이 가능한지 확인한 후, next() 메서드로 해당 위치의 보관한 개체를 참조하여 원하는 작업을 수행합니다.
+Iterator가 필요한 이유는 컬렉션 종류에 관계없이 일관성있게 프로그래밍할 수 있다는 장점을 갖고 있기 때문입니다. 소스 코드에 어떠한 컬렉션을 사용할 지 정해지지 않았지만 컬렉션 내에 보관한 모든 내용을 출력하는 등의 작업을 먼저 하길 원한다면 Iterator를 사용하는 것은 좋은 선택입니다.
+
