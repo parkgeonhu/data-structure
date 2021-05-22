@@ -27,7 +27,7 @@ public abstract class Employee
 } // end abstract class Employee
 ```
 
-다형성이란 객체지향개념에 있어서는 여러가지 형태를 가질 수 있는 능력을 뜻한다. 하나의 객체를 여러 가지 타입으로 선언할 수 있음을 뜻하기도 한다. Java에서 다형성은 상속과 인터페이스를 통해 이루어진다. 이번 프로젝트에서 사용된 Employee 추상클래스의 상속을 일례로 이 프로젝트에서 다형성이 사용되었다 말할 수 있다.
+다형성이란 객체지향개념에 있어서는 여러가지 형태를 가질 수 있는 능력을 뜻한다. 하나의 객체를 여러 가지 타입으로 선언할 수 있음을 뜻하기도 한다. Java에서 다형성은 상속과 인터페이스를 통해 이루어진다. 이번 프로젝트에서 사용된 Employee 추상클래스의 상속을 일례로 이 프로젝트에서 다형성이 사용되었다 말할 수 있다. dfadfadsf 
 
  ```  java
 public class HourlyEmployee extends Employee 
